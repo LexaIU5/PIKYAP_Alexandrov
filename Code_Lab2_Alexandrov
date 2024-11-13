@@ -1,0 +1,79 @@
+from abc import ABC, abstractmethod
+!python -m venv myenv
+!myenv\Scripts\activate
+import numpy as np
+!pip install numpy
+# Создание одномерного массива
+one_array = np.array([1, 2, 3, 4, 5])
+print("Одномерный массив:")
+print(one_array)
+
+class GeometricFigure(ABC):
+    def square(self):
+        pass
+class FigureColor:
+    def __init__(self, color): #конструктор
+        self._color = color
+    @property
+    def color_property(self):
+        return self._color #защищенный атрибут
+    @color_property.setter
+    def color_property(self, value):
+        self._color = value
+    def __repr__(self):
+        return self._color
+class Rectangle(GeometricFigure):
+    fR = "Прямоугольник" #наша фигура
+    @classmethod
+    def get_fR(cls): #метод класса, обращаемся не к экземпляру
+        return cls.fR
+    def __init__(self, width, height, col):
+        self.width = width
+        self.height = height
+        self.col = FigureColor(col)
+    def square(self):
+        return self.width*self.height
+    def __repr__(self):
+        return "{} {} цвета, шириной {}, высотой {} , площадью {}.".format(Rectangle.get_fR(),
+                                                                                    self.col,
+                                                                                    self.width,
+                                                                                    self.height,
+                                                                                    self.square())
+class Circle(GeometricFigure):
+    fC = "Круг" #наша фигура
+    @classmethod
+    def get_fC(cls): #метод класса, обращаемся не к экземпляру
+        return cls.fC
+    def __init__(self, radius, col):
+        self.radius = radius
+        self.col = FigureColor(col)
+    def square(self):
+        from math import pi
+        return pi*(self.radius**2)
+    def __repr__(self):
+        return "{} {} цвета, радиус равен {}, а площадь равна {}.".format(Circle.get_fC(),
+                                                             self.col,
+                                                             self.radius,
+                                                             self.square())
+class Square(Rectangle):
+    fS = "Квадрат" #наша фигура
+    @classmethod
+    def get_fS(cls): #метод класса, обращаемся не к экземпляру
+        return cls.fS
+    def __init__(self, side, col):
+        self.side = side
+        super().__init__(side, side, col)
+    def __repr__(self):
+        return "{} {} цвета, сторона равна {}, а площадь также {}.".format(Square.get_fS(),
+                                                             self.col,
+                                                             self.side,
+                                                             self.square())
+def main():
+    r = Rectangle(1, 1, "розового")
+    c = Circle(1, "желтого")
+    s = Square(1, "красного")
+    print(r)
+    print(c)
+    print(s)
+main()
+
