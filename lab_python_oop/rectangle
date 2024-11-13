@@ -1,0 +1,17 @@
+class Rectangle(GeometricFigure):
+    fR = "Прямоугольник" #наша фигура
+    @classmethod
+    def get_fR(cls): #метод класса, обращаемся не к экземпляру
+        return cls.fR
+    def __init__(self, width, height, col):
+        self.width = width
+        self.height = height
+        self.col = FigureColor(col)
+    def square(self):
+        return self.width*self.height
+    def __repr__(self):
+        return "{} {} цвета, шириной {}, высотой {} , площадью {}.".format(Rectangle.get_fR(),
+                                                                                    self.col,
+                                                                                    self.width,
+                                                                                    self.height,
+                                                                                    self.square())
