@@ -1,3 +1,0 @@
-class GeometricFigure(ABC):
-    def square(self):
-        pass
