@@ -1,0 +1,11 @@
+class FigureColor:
+    def __init__(self, color): #конструктор
+        self._color = color
+    @property
+    def color_property(self):
+        return self._color #защищенный атрибут
+    @color_property.setter
+    def color_property(self, value):
+        self._color = value
+    def __repr__(self):
+        return self._color
