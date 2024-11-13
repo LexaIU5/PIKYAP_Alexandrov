@@ -1,0 +1,16 @@
+class Circle(GeometricFigure):
+    fC = "Круг" #наша фигура
+    @classmethod
+    def get_fC(cls): #метод класса, обращаемся не к экземпляру
+        return cls.fC
+    def __init__(self, radius, col):
+        self.radius = radius
+        self.col = FigureColor(col)
+    def square(self):
+        from math import pi
+        return pi*(self.radius**2)
+    def __repr__(self):
+        return "{} {} цвета, радиус равен {}, а площадь равна {}.".format(Circle.get_fC(),
+                                                             self.col,
+                                                             self.radius,
+                                                             self.square())
