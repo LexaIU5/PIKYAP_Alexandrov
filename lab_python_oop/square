@@ -1,0 +1,13 @@
+class Square(Rectangle):
+    fS = "Квадрат" #наша фигура
+    @classmethod
+    def get_fS(cls): #метод класса, обращаемся не к экземпляру
+        return cls.fS
+    def __init__(self, side, col):
+        self.side = side
+        super().__init__(side, side, col)
+    def __repr__(self):
+        return "{} {} цвета, сторона равна {}, а площадь также {}.".format(Square.get_fS(),
+                                                             self.col,
+                                                             self.side,
+                                                             self.square())
